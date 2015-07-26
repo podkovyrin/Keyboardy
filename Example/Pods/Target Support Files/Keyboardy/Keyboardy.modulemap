@@ -1,0 +1,6 @@
+framework module Keyboardy {
+  umbrella header "Keyboardy-umbrella.h"
+
+  export *
+  module * { export * }
+}

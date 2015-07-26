@@ -1,0 +1,14 @@
+PODS:
+  - Keyboardy (0.1.0)
+
+DEPENDENCIES:
+  - Keyboardy (from `../`)
+
+EXTERNAL SOURCES:
+  Keyboardy:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Keyboardy: 170bc2493b703bdba8e31e0579c0d5489c553f6d
+
+COCOAPODS: 0.38.1

@@ -1,0 +1,6 @@
+framework module Pods_Keyboardy_Example {
+  umbrella header "Pods-Keyboardy_Example-umbrella.h"
+
+  export *
+  module * { export * }
+}
