@@ -41,7 +41,7 @@ class ViewController: UIViewController {
 extension ViewController: KeyboardStateDelegate {
     
     func keyboardWillTransition(state: KeyboardState) {
-        // keyboard will to show or hide
+        // keyboard will show or hide
     }
     
     func keyboardTransitionAnimation(state: KeyboardState) {

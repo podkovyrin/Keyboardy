@@ -47,14 +47,14 @@ public protocol KeyboardStateDelegate: class {
     /**
         Notifies the receiver that the keyboard will show or hide with specified parameters. This method is called before keyboard animation.
     
-        :param: state Keyboard state
+        - parameter state: Keyboard state
     */
     func keyboardWillTransition(state: KeyboardState)
     
     /**
         Keyboard animation. This method is called inside `UIView` animation block with the same animation parameters as keyboard animation.
     
-        :param: state Keyboard state
+        - parameter state: Keyboard state
     */
     func keyboardTransitionAnimation(state: KeyboardState)
     
@@ -62,7 +62,7 @@ public protocol KeyboardStateDelegate: class {
     /**
         Notifies the receiver that the keyboard animation finished. This method is called after keyboard animation.
         
-        :param: state Keyboard state
+        - parameter state: Keyboard state
     */
     func keyboardDidTransition(state: KeyboardState)
 }
@@ -82,7 +82,7 @@ public extension UIViewController {
     /**
         Register for `UIKeyboardWillShowNotification` and `UIKeyboardWillHideNotification` notifications.
     
-        :param: keyboardStateDelegate Keyboard state delegate
+        - parameter keyboardStateDelegate: Keyboard state delegate
 
         :discussion: It is recommended to call this method in `viewWillAppear:`
     */
@@ -112,7 +112,7 @@ public extension UIViewController {
     /// Handler for `UIKeyboardWillShowNotification`
     private dynamic func keyboardWillShow(n: NSNotification) {
         if let userInfo = n.userInfo,
-            height = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height,
+            height = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.size.height,
             duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
             curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.integerValue {
                 
@@ -124,7 +124,6 @@ public extension UIViewController {
     /// Handler for `UIKeyboardWillHideNotification`
     private dynamic func keyboardWillHide(n: NSNotification) {
         if let userInfo = n.userInfo,
-            height = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue().size.height,
             duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
             curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.integerValue {
                 
@@ -188,7 +187,7 @@ public extension UIViewController {
             objc_setAssociatedObject(self,
                 &AssociatedKeys.KeyboardDelegate,
                 value,
-                objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
             )
         }
     }
@@ -205,7 +204,7 @@ public extension UIViewController {
             objc_setAssociatedObject(self,
                 &AssociatedKeys.KeyboardHeight,
                 NSNumber(float: Float(newValue)),
-                objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC
             )
         }
     }
