@@ -46,7 +46,7 @@ override func viewWillDisappear(animated: Bool) {
 extension ViewController: KeyboardStateDelegate {
 
     func keyboardWillTransition(state: KeyboardState) {
-        // keyboard will to show or hide
+        // keyboard will show or hide
     }
 
     func keyboardTransitionAnimation(state: KeyboardState) {
@@ -94,7 +94,7 @@ $ brew update
 $ brew install carthage
 ```
 
-To integrate Alamofire into your Xcode project using Carthage, specify it in your `Cartfile`:
+To integrate Keyboardy into your Xcode project using Carthage, specify it in your `Cartfile`:
 
 ```ogdl
 github "podkovyrin/Keyboardy"
