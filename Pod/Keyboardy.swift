@@ -112,9 +112,11 @@ public extension UIViewController {
     /// Handler for `UIKeyboardWillShowNotification`
     private dynamic func keyboardWillShow(n: NSNotification) {
         if let userInfo = n.userInfo,
-            height = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue.size.height,
+            rect = userInfo[UIKeyboardFrameEndUserInfoKey]?.CGRectValue,
             duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
             curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.integerValue {
+                let convertedRect = view.convertRect(rect, fromView: nil)
+                let height = convertedRect.height
                 
                 keyboardHeight = height
                 keyboardAnimationToState(.ActiveWithHeight(keyboardHeight), duration:duration, curve:UIViewAnimationCurve(rawValue: curve)!)
