@@ -116,7 +116,7 @@ public extension UIViewController {
             duration = userInfo[UIKeyboardAnimationDurationUserInfoKey]?.doubleValue,
             curve = userInfo[UIKeyboardAnimationCurveUserInfoKey]?.integerValue {
                 let convertedRect = view.convertRect(rect, fromView: nil)
-                let height = convertedRect.height
+                let height = max(0, view.bounds.size.height - convertedRect.origin.y)
                 
                 keyboardHeight = height
                 keyboardAnimationToState(.ActiveWithHeight(keyboardHeight), duration:duration, curve:UIViewAnimationCurve(rawValue: curve)!)
