@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var textFieldContainerBottomConstraint: NSLayoutConstraint!
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // 2. Register for keyboard notifications
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         registerForKeyboardNotifications(self)
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         // 3. Unregister from keyboard notifications
@@ -40,22 +40,22 @@ class ViewController: UIViewController {
 
 extension ViewController: KeyboardStateDelegate {
     
-    func keyboardWillTransition(state: KeyboardState) {
+    func keyboardWillTransition(_ state: KeyboardState) {
         // keyboard will show or hide
     }
     
-    func keyboardTransitionAnimation(state: KeyboardState) {
+    func keyboardTransitionAnimation(_ state: KeyboardState) {
         switch state {
-        case .ActiveWithHeight(let height):
+        case .activeWithHeight(let height):
             textFieldContainerBottomConstraint.constant = height
-        case .Hidden:
+        case .hidden:
             textFieldContainerBottomConstraint.constant = 0.0
         }
         
         view.layoutIfNeeded()
     }
     
-    func keyboardDidTransition(state: KeyboardState) {
+    func keyboardDidTransition(_ state: KeyboardState) {
         // keyboard animation finished
     }
 }
@@ -63,7 +63,7 @@ extension ViewController: KeyboardStateDelegate {
 
 extension ViewController: UITextFieldDelegate {
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
