@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "Keyboardy"
-  s.version          = "0.1.1"
+  s.version          = "0.2.0"
   s.summary          = "UIViewController extension for convenient keyboard management."
   s.description      = <<-DESC
                        Keyboardy extends UIViewController with few simple methods and provides delegate for handling keyboard appearance notifications.

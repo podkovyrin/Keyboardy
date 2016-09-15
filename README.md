@@ -25,7 +25,7 @@ import Keyboardy
 
 - Register for keyboard notifications
 ```Swift
-override func viewWillAppear(animated: Bool) {
+override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
 
     registerForKeyboardNotifications(self)
@@ -34,7 +34,7 @@ override func viewWillAppear(animated: Bool) {
 
 - Unregister from keyboard notifications
 ```Swift
-override func viewWillDisappear(animated: Bool) {
+override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
 
     unregisterFromKeyboardNotifications()
@@ -45,22 +45,22 @@ override func viewWillDisappear(animated: Bool) {
 ```Swift
 extension ViewController: KeyboardStateDelegate {
 
-    func keyboardWillTransition(state: KeyboardState) {
+    func keyboardWillTransition(_ state: KeyboardState) {
         // keyboard will show or hide
     }
 
-    func keyboardTransitionAnimation(state: KeyboardState) {
+    func keyboardTransitionAnimation(_ state: KeyboardState) {
         switch state {
-        case .ActiveWithHeight(let height):
+        case .activeWithHeight(let height):
             textFieldContainerBottomConstraint.constant = height
-        case .Hidden:
+        case .hidden:
             textFieldContainerBottomConstraint.constant = 0.0
         }
 
         view.layoutIfNeeded()
     }
 
-    func keyboardDidTransition(state: KeyboardState) {
+    func keyboardDidTransition(_ state: KeyboardState) {
         // keyboard animation finished
     }
 }
@@ -72,7 +72,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-Swift 1.2, iOS 8
+Swift 3, iOS 8
 
 ## Installation via CocoaPods
 
