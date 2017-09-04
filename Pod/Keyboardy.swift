@@ -112,7 +112,7 @@ public extension UIViewController {
     /// Handler for `UIKeyboardWillShowNotification`
     fileprivate dynamic func keyboardWillShow(_ n: Notification) {
         if let userInfo = n.userInfo,
-            let rect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+            let rect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
             let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
             
