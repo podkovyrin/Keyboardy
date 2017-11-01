@@ -90,8 +90,8 @@ public extension UIViewController {
         self.keyboardStateDelegate = keyboardStateDelegate
         
         let defaultCenter = NotificationCenter.default
-        defaultCenter.addObserver(self, selector:#selector(UIViewController.keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object:nil)
-        defaultCenter.addObserver(self, selector:#selector(UIViewController.keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object:nil)
+        defaultCenter.addObserver(self, selector:#selector(UIViewController._keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object:nil)
+        defaultCenter.addObserver(self, selector:#selector(UIViewController._keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object:nil)
     }
     
     /**
@@ -110,7 +110,7 @@ public extension UIViewController {
     // MARK: Private
     
     /// Handler for `UIKeyboardWillShowNotification`
-    fileprivate dynamic func keyboardWillShow(_ n: Notification) {
+    fileprivate dynamic func _keyboardWillShow(_ n: Notification) {
         if let userInfo = n.userInfo,
             let rect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
@@ -126,7 +126,7 @@ public extension UIViewController {
     }
     
     /// Handler for `UIKeyboardWillHideNotification`
-    fileprivate dynamic func keyboardWillHide(_ n: Notification) {
+    fileprivate dynamic func _keyboardWillHide(_ n: Notification) {
         if let userInfo = n.userInfo,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
             let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
