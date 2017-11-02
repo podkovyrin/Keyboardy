@@ -1,12 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 use_frameworks!
 
-target 'Keyboardy_Example', :exclusive => true do
+platform :ios, '8.3'
+
+target 'Keyboardy_Example' do
   pod "Keyboardy", :path => "../"
 end
 
-target 'Keyboardy_Tests', :exclusive => true do
+target 'Keyboardy_Tests' do
   pod "Keyboardy", :path => "../"
-
-  
 end
