@@ -1,5 +1,5 @@
 PODS:
-  - Keyboardy (0.2.2)
+  - Keyboardy (0.2.3)
 
 DEPENDENCIES:
   - Keyboardy (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  Keyboardy: 3988f38e2350a7c774354c36db0f2bd37b8b618a
+  Keyboardy: 63b7388e0bb2222cfe3dc33aeabd756ebdcff017
 
 PODFILE CHECKSUM: fb96030c69f3a9b8fd313951547285675ab27a25
 
