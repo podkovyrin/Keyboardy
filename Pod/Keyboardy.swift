@@ -110,7 +110,7 @@ public extension UIViewController {
     // MARK: Private
     
     /// Handler for `UIKeyboardWillShowNotification`
-    fileprivate dynamic func _keyboardWillShow(_ n: Notification) {
+    @objc fileprivate dynamic func _keyboardWillShow(_ n: Notification) {
         if let userInfo = n.userInfo,
             let rect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
@@ -126,7 +126,7 @@ public extension UIViewController {
     }
     
     /// Handler for `UIKeyboardWillHideNotification`
-    fileprivate dynamic func _keyboardWillHide(_ n: Notification) {
+    @objc fileprivate dynamic func _keyboardWillHide(_ n: Notification) {
         if let userInfo = n.userInfo,
             let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
             let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
@@ -153,7 +153,7 @@ public extension UIViewController {
     }
     
     /// Keyboard animation did stop selector
-    fileprivate dynamic func keyboardAnimationDidStop(_ animationID: String?, finished: Bool, context: UnsafeMutableRawPointer) {
+    @objc fileprivate dynamic func keyboardAnimationDidStop(_ animationID: String?, finished: Bool, context: UnsafeMutableRawPointer) {
         keyboardStateDelegate?.keyboardDidTransition(keyboardState)
     }
     
