@@ -89,9 +89,10 @@ public extension UIViewController {
     public func registerForKeyboardNotifications(_ keyboardStateDelegate: KeyboardStateDelegate) {
         self.keyboardStateDelegate = keyboardStateDelegate
         
+        
         let defaultCenter = NotificationCenter.default
-        defaultCenter.addObserver(self, selector:#selector(UIViewController._keyboardWillShow(_:)), name:NSNotification.Name.UIKeyboardWillShow, object:nil)
-        defaultCenter.addObserver(self, selector:#selector(UIViewController._keyboardWillHide(_:)), name:NSNotification.Name.UIKeyboardWillHide, object:nil)
+        defaultCenter.addObserver(self, selector:#selector(UIViewController._keyboardWillShow(_:)), name:UIResponder.keyboardWillShowNotification, object:nil)
+        defaultCenter.addObserver(self, selector:#selector(UIViewController._keyboardWillHide(_:)), name:UIResponder.keyboardWillHideNotification, object:nil)
     }
     
     /**
@@ -103,8 +104,8 @@ public extension UIViewController {
         self.keyboardStateDelegate = nil
         
         let defaultCenter = NotificationCenter.default
-        defaultCenter.removeObserver(self, name:NSNotification.Name.UIKeyboardWillShow, object:nil)
-        defaultCenter.removeObserver(self, name:NSNotification.Name.UIKeyboardWillHide, object:nil)
+        defaultCenter.removeObserver(self, name:UIResponder.keyboardWillShowNotification, object:nil)
+        defaultCenter.removeObserver(self, name:UIResponder.keyboardWillHideNotification, object:nil)
     }
     
     // MARK: Private
@@ -112,15 +113,15 @@ public extension UIViewController {
     /// Handler for `UIKeyboardWillShowNotification`
     @objc fileprivate dynamic func _keyboardWillShow(_ n: Notification) {
         if let userInfo = n.userInfo,
-            let rect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
-            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-            let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
+            let rect = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let curve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
             
                 let convertedRect = view.convert(rect, from: nil)
                 let height = convertedRect.height
 
                 keyboardHeight = height
-                keyboardAnimationToState(.activeWithHeight(keyboardHeight), duration:duration, curve:UIViewAnimationCurve(rawValue: curve)!)
+                keyboardAnimationToState(.activeWithHeight(keyboardHeight), duration:duration, curve:UIView.AnimationCurve(rawValue: curve)!)
             
         }
     }
@@ -128,16 +129,16 @@ public extension UIViewController {
     /// Handler for `UIKeyboardWillHideNotification`
     @objc fileprivate dynamic func _keyboardWillHide(_ n: Notification) {
         if let userInfo = n.userInfo,
-            let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
-            let curve = (userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
+            let duration = (userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue,
+            let curve = (userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? NSNumber)?.intValue {
             
                 keyboardHeight = 0.0
-                keyboardAnimationToState(.hidden, duration:duration, curve:UIViewAnimationCurve(rawValue: curve)!)
+                keyboardAnimationToState(.hidden, duration:duration, curve:UIView.AnimationCurve(rawValue: curve)!)
         }
     }
     
     /// Keyboard animation
-    fileprivate func keyboardAnimationToState(_ state: KeyboardState, duration: TimeInterval, curve: UIViewAnimationCurve) {
+    fileprivate func keyboardAnimationToState(_ state: KeyboardState, duration: TimeInterval, curve: UIView.AnimationCurve) {
         keyboardStateDelegate?.keyboardWillTransition(state)
         
         UIView.beginAnimations(nil, context:nil)
