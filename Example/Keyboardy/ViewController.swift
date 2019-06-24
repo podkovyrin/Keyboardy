@@ -48,7 +48,7 @@ extension ViewController: KeyboardStateDelegate {
         switch state {
         case .activeWithHeight(let height):
             textFieldContainerBottomConstraint.constant = height
-        case .hidden:
+        case .hiddenWithHeight(_):
             textFieldContainerBottomConstraint.constant = 0.0
         }
         
