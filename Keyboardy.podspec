@@ -11,6 +11,8 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/podkovyrin/Keyboardy.git", :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/podkovyr'
 
+  s.swift_version = '5.0'
+
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
