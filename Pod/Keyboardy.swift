@@ -75,7 +75,7 @@ public extension UIViewController {
     // MARK: Public
     
     /// Current keyboard state
-    public var keyboardState: KeyboardState {
+    var keyboardState: KeyboardState {
         return keyboardHeight > 0 ? .activeWithHeight(keyboardHeight) : .hidden
     }
     
@@ -86,7 +86,7 @@ public extension UIViewController {
 
         :discussion: It is recommended to call this method in `viewWillAppear:`
     */
-    public func registerForKeyboardNotifications(_ keyboardStateDelegate: KeyboardStateDelegate) {
+    func registerForKeyboardNotifications(_ keyboardStateDelegate: KeyboardStateDelegate) {
         self.keyboardStateDelegate = keyboardStateDelegate
         
         
@@ -100,7 +100,7 @@ public extension UIViewController {
     
         :discussion: It is recommended to call this method in `viewWillDisappear:`
     */
-    public func unregisterFromKeyboardNotifications() {
+    func unregisterFromKeyboardNotifications() {
         self.keyboardStateDelegate = nil
         
         let defaultCenter = NotificationCenter.default
