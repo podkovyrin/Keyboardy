@@ -2,6 +2,7 @@
 
 [![Version](https://img.shields.io/cocoapods/v/Keyboardy.svg?style=flat)](http://cocoapods.org/pods/Keyboardy)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Accio supported](https://img.shields.io/badge/Accio-supported-0A7CF5.svg?style=flat)](https://github.com/JamitLabs/Accio)
 [![License](https://img.shields.io/cocoapods/l/Keyboardy.svg?style=flat)](http://cocoapods.org/pods/Keyboardy)
 [![Platform](https://img.shields.io/cocoapods/p/Keyboardy.svg?style=flat)](http://cocoapods.org/pods/Keyboardy)
 
@@ -99,6 +100,22 @@ To integrate Keyboardy into your Xcode project using Carthage, specify it in you
 ```ogdl
 github "podkovyrin/Keyboardy"
 ```
+
+## Installation via Accio
+
+ 1. Add the following to your `Package.swift`:
+
+    ```swift
+    .package(url: "https://github.com/podkovyrin/Keyboardy.git", .upToNextMajor(from: "0.2.7")),
+    ```
+
+ 2. Next, add `Keyboardy` to your App targets dependencies like so:
+
+    ```swift
+    .target(name: "App", dependencies: ["Keyboardy"]),
+    ```
+
+ 3. Then run `accio update`.
 
 ## Author
 
